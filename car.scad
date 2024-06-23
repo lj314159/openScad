@@ -1,0 +1,35 @@
+$fa=1;
+$fs=.4;
+wheel_radius=10;
+base_height=8;
+top_height=10;
+track=40;
+wheel_width=3;
+body_roll=-7;
+wheels_turn=20;
+rotate([body_roll,0,0]){
+//Car body base
+cube([60,20,base_height],center=true);
+//Car body top
+translate([5,0,base_height/2+top_height/2-.001])
+    cube([30,20,top_height],center=true);
+}
+//wheels
+translate([-20,-track/2,0])
+    rotate([90,0,wheels_turn])
+        cylinder(h=wheel_width,r=wheel_radius,center=true);
+translate([-20,track/2,0])
+    rotate([90,0,wheels_turn])
+        cylinder(h=wheel_width,r=wheel_radius,center=true);
+translate([20,-track/2,0])
+    rotate([90,0,0])
+        cylinder(h=wheel_width,r=wheel_radius,center=true);
+translate([20,track/2,0])
+    rotate([90,0,0])
+        cylinder(h=wheel_width,r=wheel_radius,center=true);
+translate([-20,0,0])
+    rotate([90,0,0])
+        cylinder(h=track,r=2,center=true);
+translate([20,0,0])
+    rotate([90,0,0])
+        cylinder(h=track,r=2,center=true);
