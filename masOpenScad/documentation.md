@@ -8,17 +8,19 @@ metaclass module {
     +operationName() : Type [0..1]
     -operationName() : Type [0..1]
 }
-class instance {
-    +attribute: var
-    +operation(): difference
+class cube {
+    <<inputs>>
+    +length: float
+    +translate([x,y,z]): void
 }
-module <|-right- instance
+module <|-right- cube
 @enduml
 ```
-### Window Stopper Class Diagram
+### Wall Anchor Class Diagram
 ```puml
 @startuml
 class wall_anchor {
+    <<inputs>>
     +drill_hole_dm: float
     +screw_dm: float
     +length: float
@@ -32,14 +34,39 @@ class wall_anchor {
     +teeth_div: int = 5
     +teeth_depth: float = 1.5
     +round_shape: bool = false
-    -outer_dm: float
-    -side_length: float
-    -abs_taper_end: float
-    -taper_dm: float
-    -abs_collar: float
-    -teeth_count: int
-    -teeth_dist: float
-    -opposite
+    +translate([x,y,z]): void
+    +rotate([x,y,z]): void
+    +scale([x,y,z]): void
 }
+note right of wall_anchor
+Responsibilities:
+draw wall anchor
+end note
+@enduml
+```
+### Wall Anchor Object Diagram
+```puml
+@startuml
+object wall_anchor {
+<<default>>
+...
+<<specified>>
+drill_hole_dm = 8
+screw_dm = 4
+length = 40
+inner_taper = .33
+
+}
+@enduml
+```
+### Sequence Diagram
+```puml
+@startuml
+actor user
+participant "wall_anchor[n]" as wall_anchor
+user --> wall_anchor : translate
+user --> wall_anchor : create
+activate wall_anchor
+deactivate wall_anchor
 @enduml
 ```
