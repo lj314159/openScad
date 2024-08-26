@@ -55,7 +55,8 @@ drill_hole_dm = 8
 screw_dm = 4
 length = 40
 inner_taper = .33
-
+rotate([20,20,20])
+translate([0,0,10])
 }
 @enduml
 ```
@@ -64,6 +65,7 @@ inner_taper = .33
 @startuml
 actor user
 participant "wall_anchor[n]" as wall_anchor
+user --> wall_anchor : rotate
 user --> wall_anchor : translate
 user --> wall_anchor : create
 activate wall_anchor

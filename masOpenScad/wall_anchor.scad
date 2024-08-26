@@ -87,4 +87,5 @@ module wall_anchor (
 
 }
 translate([0,0,10])
+rotate([20,20,20])
 wall_anchor(8,4,40, inner_taper = 0.33, round_shape = false);
