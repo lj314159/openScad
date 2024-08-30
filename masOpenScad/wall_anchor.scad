@@ -1,9 +1,3 @@
-
-
-
-// a special wall anchor with lots of adjustments
-// (all sizes in millimeter)
-
 module wall_anchor (
     drill_hole_dm,          // drill hole diameter
     screw_dm,               // screw diameter
