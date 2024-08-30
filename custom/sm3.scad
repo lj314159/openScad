@@ -1,6 +1,10 @@
 $fn=50;
+difference() {
 translate([0,0,1])
 cylinder(30,1);
+translate([0,0,.9])
+cylinder(r1=0.5,r2=0,h=1);
+}
 translate([0,0,31])
 cylinder(r1=1,r2=.1,h=4);
 lowFinPoints = [
@@ -31,7 +35,6 @@ midFinFaces = [
 [2,6,3],
 [0,4,6,3,7,5]
 ];
-//polyhedron(midFinPoints, midFinFaces);
 for (i = [0:3]) {
     rotate([0,0,i*90])
     polyhedron(points = lowFinPoints, faces = lowFinFaces);
