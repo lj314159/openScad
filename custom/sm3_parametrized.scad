@@ -1,3 +1,4 @@
+$fn = 100;
 module missile (
     missileLength   = 30,   //length
     missileRadius   = 1,    //length
@@ -113,9 +114,10 @@ module missile (
         }
     }
 }
+missile();
 module aresenal (
     aresenalSize = 10,
-    spread = 20
+    spread = 100
 )
 {
     for (i = [0:aresenalSize-1]) {
@@ -133,5 +135,4 @@ for (i = [0:aresenalSize-2]) {
     }
 }
 }
-$fn = 50;
-aresenal();
+//aresenal();
