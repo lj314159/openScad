@@ -2,14 +2,14 @@ module missile (
     missileLength   = 30,   //length
     missileRadius   = 1,    //length
     noseRatio       = 4,    //ratio
-    midFromNose     = 0.25, //ratio
-    midFromLow      = 0.25, //ratio
-    midHeight       = 1,    //length
+    midFromNose     = 4,    //length
+    midFromLow      = 1,    //length
+    midHeight       = 1.7,  //length
     lowLength       = 1,    //length
     lowHeight       = 4,    //length
     lowTopAngle     = 55,   //angle
     lowBottomAngle  = 75,   //angle
-    finSharpness    = 5    //angle
+    finSharpness    = 5     //angle
 )
 {
     cylinder(r=missileRadius, h=missileLength); // missile tube
@@ -60,16 +60,16 @@ module missile (
     [0,4,6,3,7,5]];
     polyhedron(points = lowFinPoints, faces = lowFinFaces);
     }
-    lowFin();
-    module midFin () {
+    //lowFin();
+    module midFin() {
     mx_0 = 0;
     my_0 = 0;
     mz_0 = missileLength - missileRadius * noseRatio - midFromNose;
     mx_3 = 0;
     my_3 = 0;
-    mz_3 = lz_0 + midFromLow;
+    mz_3 = lowHeight + lowHeight / tan(lowTopAngle) + midFromLow;
     mx_5 = 0;
-    my_5 = ly_5;
+    my_5 = -lowHeight * tan(finSharpness/2);
     mz_5 = mz_0 - midHeight;
     mx_4 = 0;
     my_4 = -my_5;
@@ -103,13 +103,35 @@ module missile (
     [2,7,5,1],
     [0,1,5],
     [0,4,6,3,7,5]];
+    polyhedron(points = midFinPoints, faces = midFinFaces);
     }
-    midFin();
-    //for (i = [0:3]) {
-        //rotate([0,0,i*90])
-        //polyhedron(points = lowFinPoints, faces = lowFinFaces);
-        //polyhedron(points = midFinPoints, faces = midFinFaces);
-    //}
+    //midFin();
+    for (i = [0:3]) {
+        rotate([0,0,i*90]){
+            lowFin();
+            midFin();
+        }
+    }
+}
+module aresenal (
+    aresenalSize = 10,
+    spread = 20
+)
+{
+    for (i = [0:aresenalSize-1]) {
+    for (j = [0:aresenalSize-1]) {
+        translate([i*spread,0,0]) 
+        translate([0,j*spread,0]) 
+        missile();
+    }
+}
+for (i = [0:aresenalSize-2]) {
+    for (j = [0:aresenalSize-2]) {
+        translate([i*spread+spread/2,0,0]) 
+        translate([0,j*spread+spread/2,0]) 
+        missile();
+    }
+}
 }
 $fn = 50;
-missile();
+aresenal();
