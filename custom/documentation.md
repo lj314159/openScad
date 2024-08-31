@@ -9,6 +9,7 @@ class missile {
     +midFromNose: float
     +midFromLow: float
     +midHeight: float
+    +lowLength: float
     +lowHeight: float
     +lowTopAngle: float
     +lowBottomAngle: float
@@ -23,6 +24,7 @@ midFromNose: distance of top part of mid fin from nose relative to nose-bottom f
 midFromLow: distance of low part of mid fin from bottom relative to nose-bottom fin
 midHeight: height of mid fin relative to missle radius
 lowHeight: height of low fin relative to missle radius
+lowLength: length of low fin from top point to bottom point
 lowTopAngle: angle of top of bottom fin from missle
 lowBottomAngle: angle of bottom fin from missle
 finSharpness: angle of fin from top down in degrees
