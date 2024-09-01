@@ -37,7 +37,7 @@ resolution will be 50
 end note
 @enduml
 ```
-### Building Class Diagram
+### Building Class Diagram 1
 ```puml
 @startuml
 class buildingSpecs {
@@ -54,5 +54,43 @@ Define:
 length: distance between sharp points
 width: distance between long sides
 end note
+@enduml
+```
+### Building Class Diagram 2
+```puml
+@startuml
+class Building {
+    <<inputs>>
+    +length: float
+    +width: float
+    +numFloor: int
+    +floorThickness: float
+    +storyHeight: float
+    +beamRadius: float
+    +numBuilding: int
+    +xOff: float
+    +yOff: float
+    +ledgeFloor: int
+}
+class Draw {
+-length
+-width
+-numFloor
+-floorThickness
+-storyHeight
+-beamRadius
+}
+class Iterate {
+    -numBuilding
+    -xOff
+    -yOff
+}
+class Ledge {
+    -ledgeFloor
+}
+Building *-- Draw
+Building *-- Iterate
+Iterate --> Draw
+Building *-- Ledge
 @enduml
 ```
