@@ -5,10 +5,10 @@ module missile (
     noseRatio       = 4,    //ratio
     midFromNose     = 4,    //length
     midFromLow      = 1,    //length
-    midHeight       = 1.7,  //length
-    lowLength       = 1,    //length
+    midHeight       = 2,  //length
+    lowLength       = .8,    //length
     lowHeight       = 4,    //length
-    lowTopAngle     = 55,   //angle
+    lowTopAngle     = 65,   //angle
     lowBottomAngle  = 75,   //angle
     finSharpness    = 5     //angle
 )
@@ -61,7 +61,6 @@ module missile (
     [0,4,6,3,7,5]];
     polyhedron(points = lowFinPoints, faces = lowFinFaces);
     }
-    //lowFin();
     module midFin() {
     mx_0 = 0;
     my_0 = 0;
@@ -106,7 +105,6 @@ module missile (
     [0,4,6,3,7,5]];
     polyhedron(points = midFinPoints, faces = midFinFaces);
     }
-    //midFin();
     for (i = [0:3]) {
         rotate([0,0,i*90]){
             lowFin();
@@ -114,10 +112,10 @@ module missile (
         }
     }
 }
-missile();
+//missile();
 module aresenal (
     aresenalSize = 10,
-    spread = 100
+    spread = 15
 )
 {
     for (i = [0:aresenalSize-1]) {
@@ -135,4 +133,4 @@ for (i = [0:aresenalSize-2]) {
     }
 }
 }
-//aresenal();
+aresenal();
