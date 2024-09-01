@@ -37,3 +37,22 @@ resolution will be 50
 end note
 @enduml
 ```
+### Building Class Diagram
+```puml
+@startuml
+class buildingSpecs {
+    <<inputs>>
+    +length: float
+    +width: float
+    +numFloor: int
+    +floorThickness: float
+    +storyHeight: float
+    +beamRadius: float
+}
+note right of buildingSpecs
+Define:
+length: distance between sharp points
+width: distance between long sides
+end note
+@enduml
+```
